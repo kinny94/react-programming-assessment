@@ -2,18 +2,28 @@ import React, { Component } from 'react';
 import Search from './Search';
 import fetchAlbums from '../api/fetchAlbums';
 import SearchResults from './SearchResults';
-import Velocity from 'velocity-animate';
+import {VelocityComponent} from 'velocity-react'
 
+require('velocity-animate');
+require('velocity-animate/velocity.ui');
 
 class Main extends Component{
 
-    state = { 'isLoading': '', albumData: '' };
+    state = { 'isLoading': '', albumData: '', heading: 'Search for any artist!!!' };
     
 
     getInitialState = () => {
         return {
             isLoading: false
         }
+    }
+
+    changeHeading( artist){
+
+        console.log( artist );
+        this.setState({
+            heading: `Showing results for ${ artist }..`
+        });
     }
 
     handleSearch = ( artist ) => {
@@ -40,7 +50,23 @@ class Main extends Component{
 
     render(){
 
-        let el = document.querySelector("#animate");
+        var animations;
+        if( this.state.albumData === ""){
+            animations = {
+                animation: {
+                    duration: 5000,
+                    translateY: 300           
+                }
+            };    
+        }else{
+            animations = {
+                animation: {
+                    duration: 5000,
+                    translateY: 0,
+                    easing: "easeInSine"           
+                }
+            };
+        }
 
         console.log( this.state );
 
@@ -54,12 +80,15 @@ class Main extends Component{
             }
         }
 
+
         return(
             <div>
-                <h1>You are in Main Component</h1>
-                <div id="animate">
-                    <Search onSearch={ this.handleSearch }/>
-                </div>
+                <VelocityComponent  { ...animations }>
+                    <div>
+                        <h1 className="heading-padding">{ this.state.heading }</h1>
+                        <Search onSearch={ this.handleSearch } handleHeading={ this.changeHeading.bind(this) }/>
+                    </div>
+                </VelocityComponent>
                 <div>
                     { renderMessage() }
                 </div>

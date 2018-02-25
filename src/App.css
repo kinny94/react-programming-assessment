@@ -1,3 +1,30 @@
 body{
-	
+    font-size: 18px;
+    padding: 0px; 
+    margin:0px; 
+    background:url('./assets/images/image.jpg') ;
+    background-position: center; 
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    text: white;
+    color: white;
+}
+
+h1{
+    font-size: 40px;
+}
+
+.heading-padding{
+    padding: 10px;
+}
+
+.table-padding{
+    padding-top: 20px;
+}
+
+@media (max-width: 860px) {
+    h1{
+        font-size: 25px;
+    }
 }

@@ -24,16 +24,12 @@ class SearchResults extends Component{
 
     render(){
 
-        const css = {
-            width: 'auto'
-        }
-
         if( this.props.albumsData ){
             return(
                 
                 <div>
-                    <div className="table-responsive">
-                        <table style={ css } className="table table-bordered">
+                    <div className="table-padding table-responsive">
+                        <table className="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Art</th>
