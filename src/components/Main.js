@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search';
 import fetchAlbums from '../api/fetchAlbums';
 import SearchResults from './SearchResults';
+import Velocity from 'velocity-animate';
 
 
 class Main extends Component{
@@ -39,6 +40,10 @@ class Main extends Component{
 
     render(){
 
+        let el = document.querySelector("#animate");
+
+        console.log( this.state );
+
         var { isLoading, albumData } = this.state;
 
         function renderMessage(){
@@ -52,7 +57,7 @@ class Main extends Component{
         return(
             <div>
                 <h1>You are in Main Component</h1>
-                <div>
+                <div id="animate">
                     <Search onSearch={ this.handleSearch }/>
                 </div>
                 <div>

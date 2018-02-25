@@ -7,7 +7,6 @@ class SearchResults extends Component{
     
         return Object.keys( content ).map( album => {
             var current = content[album];
-            console.log( current );
             return (
                 <tbody key={ album }>    
                     <tr>
@@ -16,7 +15,7 @@ class SearchResults extends Component{
                         <td><p>{ current.trackName }</p></td>
                         <td><p>{ current.collectionName }</p></td>
                         <td><p>{ current.primaryGenreName }</p></td>
-                        <td><p><p>{ current.currency + " " + current.collectionPrice }</p> </p></td>
+                        <td><p>{ current.currency + " " + current.collectionPrice }</p></td>
                     </tr>                  
                 </tbody>
             );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './search.css';
 
 class Search extends Component{
 
@@ -29,9 +30,9 @@ class Search extends Component{
     render(){
 
         return(
-            <div>
+            <div id="animate">
                 <form onSubmit={ this.handleSubmit }>
-                    <input type="text" value={ this.state.value } onChange={ this.handleChange }/>
+                    <input className="form-control form-control-lg" placeholder="Search for an artist..." type="text" value={ this.state.value } onChange={ this.handleChange }/>
                     <button type="submit">Get Albums!!</button>
                 </form>
             </div>
