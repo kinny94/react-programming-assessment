@@ -1,4 +1,5 @@
 body{
+
     font-size: 18px;
     padding: 0px; 
     margin:0px; 
@@ -9,6 +10,7 @@ body{
     background-repeat: no-repeat;
     text: white;
     color: white;
+
 }
 
 h1{

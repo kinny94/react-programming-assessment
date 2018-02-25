@@ -9,7 +9,7 @@ require('velocity-animate/velocity.ui');
 
 class Main extends Component{
 
-    state = { 'isLoading': '', albumData: '', heading: 'Search for any artist!!!' };
+    state = { 'isLoading': '', albumData: '', heading: 'Search for any artist!!!', initialState: true };
     
 
     getInitialState = () => {
@@ -20,7 +20,6 @@ class Main extends Component{
 
     changeHeading( artist){
 
-        console.log( artist );
         this.setState({
             heading: `Showing results for ${ artist }..`
         });
@@ -35,6 +34,7 @@ class Main extends Component{
         fetchAlbums.getArtistAlbums( artist ).then(( albums ) => {
 
             this.setState({
+                initialState: false,
                 albumData: albums,
                 isLoading: false
             });
@@ -68,15 +68,19 @@ class Main extends Component{
             };
         }
 
-        console.log( this.state );
-
-        var { isLoading, albumData } = this.state;
+        var { isLoading, albumData, initialState } = this.state;
 
         function renderMessage(){
+
             if( isLoading ){
                 return <h1>Fetching Data...</h1>
             }else{
-                return <SearchResults albumsData={ albumData } />
+
+                if( albumData.length > 0 ){
+                    return <SearchResults albumsData={ albumData } />
+                }else if( !initialState ){
+                    return <div><h2>No Records Found!</h2></div>
+                }                
             }
         }
 
