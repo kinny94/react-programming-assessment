@@ -9,24 +9,51 @@ class SearchResults extends Component{
             var current = content[album];
             console.log( current );
             return (
-                <div key={ album }>                    
-                    <img src={ current.artworkUrl60 }/>
-                    <p>{ current.trackId }</p>
-                    <p>{ current.trackName }</p>
-                    <p>{ current.collectionName }</p>
-                    <p>{ current.primaryGenreName }</p>                    
-                    <p>{ current.currency + " " + current.collectionPrice }</p>                    
-                </div>
+                <tbody key={ album }>    
+                    <tr>
+                        <td><img src={ current.artworkUrl60 }/></td>
+                        <td><p>{ current.trackId }</p></td>
+                        <td><p>{ current.trackName }</p></td>
+                        <td><p>{ current.collectionName }</p></td>
+                        <td><p>{ current.primaryGenreName }</p></td>
+                        <td><p><p>{ current.currency + " " + current.collectionPrice }</p> </p></td>
+                    </tr>                  
+                </tbody>
             );
         });
     }
 
     render(){
-        return(
-            <div>
-                { this.formatData() }
-            </div>
-        );
+
+        const css = {
+            width: 'auto'
+        }
+
+        if( this.props.albumsData ){
+            return(
+                
+                <div>
+                    <div className="table-responsive">
+                        <table style={ css } className="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Art</th>
+                                    <th>Track ID</th>
+                                    <th>Track Name</th>
+                                    <th>Collection Name</th>
+                                    <th>Genre</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            { this.formatData() }
+                        </table>
+                    </div>
+                </div>
+            );
+        }
+
+        return null;
+        
     }
 
 }
