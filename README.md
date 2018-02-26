@@ -20,10 +20,10 @@ Be sure to click 'Update' when your work is done.
 6. Checkin or Click Update from the top Menu and save the link
 
 
-The project uses one other JavaScript library called VelocityJS for animations, which is much more efficient than jQuery. 
+The project uses a JavaScript library called VelocityJS for animations, which is much more efficient than jQuery. 
 
-If you are downloading the zip file from Github, then type the following two commands to run the project.
-  1.) npm install
-  2.) npm start
+If you are downloading the zip file from Github, then type the following two commands to run the project:-
+1. npm install
+2. npm start
 
 The project wil be hosted at https://localhost:3000
